@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">BCA Marketplace</a>
+				</div>
+				
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/profile">My Profile</a></li>
+						<li class="active"><a href="#">The BCA Catalog</a></li>
+						<li><a href="/sellsomething">Sell Something</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h1>The Catalog</h1>
+		<div class="row">
+			{% for item in items %}
+				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+					<a class="thumbnail" href="#">
+						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
+					</a>
+					<div style="text-align: center">
+						{{ item.title }}<br>{{ item.description }}<br>{{ item.price }}<br>{{ item.owner }}<br>
+						<form action="/confirmbuy" method="POST" role="form">
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="" value={{item._id}} name="itemId">
+							</div>
+							{% if username != item.owner %}
+								<button type="submit" class="btn btn-primary">Buy</button>
+							{% endif %}
+						</form>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+</body>
+</html>

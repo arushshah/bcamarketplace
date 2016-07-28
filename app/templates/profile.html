@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<title></title>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">BCA Marketplace</a>
+				</div>
+				
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">My Profile</a></li>
+						<li><a href="/catalog">The BCA Catalog</a></li>
+						<li><a href="/sellsomething">Sell Something</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h1>Welcome, {{name}}</h1>
+		<br>
+		<h3>You have placed the following items on the catalog:</h3>
+		{% for item in itemsPlaced %}
+			<li>
+				{{item.title}}<br>
+				{{item.description}}<br>
+				{{item.price}}
+			</li>
+			<br>
+			<form action="/sold" method="POST" role="form">
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="" value={{item._id}} name="itemId">
+				</div>
+				<button type="submit" class="btn btn-primary">Remove From List</button>
+			</form>
+			<br>
+		{% endfor %}
+		<h3>You have received offers for the following items you posted on the catalog:</h3>
+		{% for item in itemsRequested %}
+			Name: {{item.title}}<br>
+			Description: {{item.description}}<br>
+			Price placed: {{item.itemPrice}}<br>
+			Price Offered: {{item.priceOffered}}<br>
+			Purchaser: {{item.purchaser}}<br>
+			<form action="/acceptoffer" method="POST" role="form">
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="" value={{item.id}} name="itemId">
+				</div>
+				<button type="submit" class="btn btn-primary">Accept and remove from catalog</button>
+			</form>
+			<hr style="width: 100%; height: 1px; background-color:black;" />
+		{% endfor %}
+	</div>
+</body>
+</html>

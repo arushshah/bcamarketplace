@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<title></title>
+	</head>
+	<div class="container">
+		<h1 style="text-align: center">Welcome to BCA Marketplace</h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="container" style="text-align: center">
+		<form action="/accountcreated" method="POST" role="form">
+			<h2>{{message}}</h2>
+			<legend>Create a New Account</legend>
+			<div class="form-group">
+				<input type="text" class="form-control" id="" placeholder="First Name" name="firstname">
+				<br>
+				<br>
+				<input type="text" class="form-control" id="" placeholder="Last Name" name="lastname">
+				<br>
+				<br>
+				<input type="text" class="form-control" id="" placeholder="Email" name="email">
+				<br>
+				<br>
+				<input type="text" class="form-control" id="" placeholder="Username" name="username">
+				<br>
+				<br>
+				<input type="password" class="form-control" id="" placeholder="Password" name="password">
+			</div>
+			<button type="submit" class="btn btn-primary">Create Account</button>
+		</form>
+	</div>
+</body>
+</html>
